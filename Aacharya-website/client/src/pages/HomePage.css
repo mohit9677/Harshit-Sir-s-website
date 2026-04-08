@@ -1,0 +1,366 @@
+/* HomePage.css */
+
+/* Make sections below the header span full width (Home page only) */
+.home-page .container {
+    max-width: none;
+    padding-left: clamp(1rem, 3vw, 3rem);
+    padding-right: clamp(1rem, 3vw, 3rem);
+}
+
+/* ── Hero ── */
+.hero-section {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    padding-top: 130px;
+    /* Reduced to match compact header */
+    background: linear-gradient(to bottom, var(--bg-deep), var(--bg-cosmic));
+    overflow: hidden;
+}
+
+.hero-container--full {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    /* Remove the big left/right gutters created by .container */
+    padding: 0 clamp(1rem, 3vw, 3rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(93, 25, 22, 0.05);
+    /* Maroon tint */
+    border: 1px solid var(--border-subtle);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: var(--text-heading);
+    margin-bottom: 2rem;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.hero-note {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Particle Text Effect */
+.hero-particle-wrapper {
+    margin-bottom: 0.5rem;
+    line-height: 0;
+}
+
+.hero-particle-wrapper canvas {
+    display: block;
+}
+
+.hero-particle-subtitle {
+    margin-bottom: 1.5rem;
+    line-height: 0;
+}
+
+.hero-particle-subtitle canvas {
+    display: block;
+}
+
+/* Screen reader only utility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ── Steps ── */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.step-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid rgba(93, 25, 22, 0.15);
+    /* Stronger border contrast */
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 20px rgba(93, 25, 22, 0.05);
+}
+
+.step-number {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgba(93, 25, 22, 0.15);
+    /* Clearer Maroon Number */
+    position: absolute;
+    top: 0.5rem;
+    right: 1.5rem;
+    line-height: 1;
+}
+
+.step-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: var(--gold-primary);
+}
+
+/* ── Trust ── */
+.trust-section {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-subtle);
+    border-bottom: 1px solid var(--border-subtle);
+    background: #FFFFFF;
+}
+
+.trust-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.trust-icon {
+    font-size: 2.5rem;
+    color: var(--gold-dark);
+}
+
+.trust-text h4 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    line-height: 1;
+}
+
+.trust-text p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ── Preview ── */
+.preview-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.benefits-list {
+    list-style: none;
+    margin: 2rem 0;
+}
+
+.benefits-list li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.preview-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Globe override — no fixed height, let aspect-ratio handle it */
+.preview-globe {
+    height: auto;
+    padding: 0;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+/* ── Pricing ── */
+.pricing-section .container {
+    text-align: center;
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.pricing-card {
+    padding: 3rem;
+    text-align: center;
+    border: 1px solid var(--border-subtle);
+    position: relative;
+    background: #FFFFFF;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-md);
+}
+
+.pricing-card.popular {
+    border-color: var(--gold-primary);
+    background: linear-gradient(145deg, #FFF5E1, #FFFFFF);
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(93, 25, 22, 0.08);
+}
+
+.popular-tag {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold-gradient);
+    color: var(--bg-deep);
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.price {
+    font-size: 3rem;
+    font-family: var(--font-heading);
+    color: var(--gold-primary);
+    margin: 1.5rem 0;
+}
+
+.features-list {
+    text-align: left;
+    margin: 2rem 0;
+    list-style: none;
+}
+
+.features-list li {
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 0.8rem;
+}
+
+.width-full {
+    width: 100%;
+}
+
+.pricing-title-middle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.section-title--pricing {
+    margin-bottom: 1.5rem;
+}
+
+.pricing-title-top {
+    display: block;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 1.5rem;
+    text-align: center;
+}
+
+/* ── Final CTA ── */
+.final-cta-section {
+    background: linear-gradient(to top, rgba(212, 175, 55, 0.05), transparent);
+}
+
+.cta-title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-subtitle {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    font-size: 1.25rem;
+    color: var(--text-muted);
+}
+
+.btn-large {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+}
+
+.cta-guarantee {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* ── Mobile Responsive ── */
+@media (max-width: 991px) {
+
+    .hero-container,
+    .hero-container--full,
+    .preview-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-note {
+        justify-content: center;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+}

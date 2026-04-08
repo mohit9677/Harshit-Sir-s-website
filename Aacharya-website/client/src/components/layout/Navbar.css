@@ -1,0 +1,500 @@
+/* Navbar.css */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* ── Top Bar: White ── */
+.header-top {
+    background: #FFFFFF;
+    padding: 0.5rem 0;
+    /* Reduced padding */
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.header-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    /* Minimum gap/buffer */
+}
+
+.logo-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    /* Reduced gap */
+    text-decoration: none;
+    flex-shrink: 0;
+    /* Prevent logo shrinking */
+}
+
+.header-logo {
+    height: 48px;
+    /* Back to standard size */
+    width: auto;
+    object-fit: contain;
+}
+
+.brand-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-name {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 1.6vw, 1.6rem);
+    /* More compact & fluid */
+    font-weight: 800;
+    color: #5D1916;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    /* Removed margin-right: auto to let space-between work evenly */
+}
+
+.text-maroon {
+    color: #5D1916;
+}
+
+.brand-tagline {
+    font-size: 0.6rem;
+    /* Smaller */
+    color: var(--gold-dark);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 0.1rem;
+    white-space: nowrap;
+}
+
+/* Header Actions */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 1.5rem);
+    /* Fluid gap */
+    flex-wrap: nowrap;
+    /* Prevent wrapping */
+}
+
+.top-nav-items {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 1.2vw, 1.25rem);
+    /* Fluid gap */
+}
+
+.nav-item {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: #333;
+    font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+    /* Fluid size */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.2s;
+    line-height: 1;
+    white-space: nowrap;
+    /* Key fix for 'Daily Panchang' */
+}
+
+.nav-item:hover {
+    color: var(--gold-primary);
+}
+
+.header-buttons {
+    display: flex;
+    gap: 0.75rem;
+    /* Tighter button grouping */
+    align-items: center;
+}
+
+.btn-pill {
+    padding: clamp(0.3rem, 0.6vw, 0.5rem) clamp(0.6rem, 1.2vw, 1rem);
+    /* Fluid padding */
+    border-radius: 50px;
+    font-size: clamp(0.75rem, 0.85vw, 0.9rem);
+    /* Fluid text */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+    border: 1.5px solid #5D1916;
+    background: #5D1916;
+    color: #FFF;
+    transition: all 0.3s ease;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.btn-pill.outline {
+    background: transparent;
+    color: #333;
+    border: 1.5px solid #E0E0E0;
+}
+
+.btn-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(93, 25, 22, 0.15);
+}
+
+/* ── Bottom Bar: Maroon ── */
+.header-bottom {
+    background: #5D1916;
+    /* Maroon */
+    padding: 0.8rem 0;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1rem, 2vw, 2rem);
+}
+
+.bottom-nav-center {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+}
+
+.main-link {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    font-size: clamp(0.85rem, 1vw, 1rem);
+    display: flex;
+    align-items: center;
+    gap: clamp(0.3rem, 0.5vw, 0.5rem);
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.main-link:hover,
+.main-link.active {
+    color: var(--gold-primary);
+}
+
+.book-puja-btn {
+    height: clamp(36px, 4vw, 42px);
+    padding: 0 clamp(1rem, 1.5vw, 1.5rem);
+    position: relative;
+    background-color: #FFFDD0; /* Creamy color before hover */
+    cursor: pointer;
+    border: 2px solid #FFFDD0;
+    overflow: hidden;
+    border-radius: 30px;
+    color: #5D1916 !important;
+    transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.book-puja-btn .btn-txt {
+    position: relative;
+    z-index: 1;
+    font-weight: 800;
+    letter-spacing: clamp(1px, 0.2vw, 2.5px);
+    text-transform: uppercase;
+    font-size: clamp(0.7rem, 0.8vw, 0.9rem);
+}
+
+.book-puja-btn.btn-type1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+    background-color: var(--gold-primary, #D4AF37); /* Hover golden color */
+    border-radius: 30px;
+    visibility: hidden;
+    height: 10px;
+    width: 10px;
+    z-index: 0;
+}
+
+.book-puja-btn:hover {
+    box-shadow: 1px 1px 200px var(--gold-primary, #D4AF37);
+    color: #5D1916 !important;
+    border-color: var(--gold-primary, #D4AF37);
+}
+
+.book-puja-btn.btn-type1:hover::after {
+    visibility: visible;
+    transform: scale(100) translateX(2px);
+}
+
+.home-icon {
+    font-size: 1.1rem;
+}
+
+.navbar-toggle {
+    display: none;
+    font-size: 1.8rem;
+    color: #5D1916;
+    cursor: pointer;
+}
+
+/* Custom Alignment Grid for Headers */
+@media (min-width: 1200px) {
+    .header-layout-grid {
+        display: grid !important;
+        grid-template-columns: clamp(260px, 28vw, 360px) 1fr clamp(360px, 35vw, 520px);
+        align-items: center;
+        width: 100%;
+        gap: 0;
+    }
+    .grid-left {
+        display: flex;
+        justify-content: flex-start;
+        min-width: 0;
+    }
+    .grid-center {
+        display: flex;
+        justify-content: flex-start;
+        min-width: 0;
+    }
+    .grid-right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        min-width: 0;
+    }
+    
+    /* Strict anchoring to visual elements on grid points */
+    .align-left-anchor {
+        justify-content: flex-start;
+        padding-left: clamp(1.5rem, 2vw, 2.2rem);
+    }
+    .align-center-anchor {
+        justify-content: flex-start;
+    }
+    .align-right-anchor {
+        justify-content: flex-end;
+        padding-right: clamp(0.5rem, 1vw, 1rem);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 1199px) {
+
+    .header-actions,
+    .top-nav-items,
+    .brand-tagline {
+        display: none;
+    }
+
+    .brand-name {
+        font-size: 1.25rem;
+        white-space: normal;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .header-bottom {
+        position: fixed;
+        top: 70px;
+        /* Below top bar */
+        left: -100%;
+        width: 80%;
+        height: 100vh;
+        background: #5D1916;
+        padding: 2rem;
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+
+    .header-bottom.active {
+        left: 0;
+    }
+
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .bottom-nav-center {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .main-link {
+        font-size: 1.25rem;
+    }
+
+    .book-puja-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+        width: 100%;
+    }
+}
+
+/* ── Dropdown Menus ── */
+.nav-dropdown-container {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+}
+
+/* Show dropdown on keyboard focus as well */
+.nav-dropdown-container:focus-within .nav-dropdown-menu {
+    display: block;
+}
+
+.nav-mega-trigger {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #FFFFFF;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    border-radius: 4px;
+    padding: 0;
+    border: 1px solid var(--border-subtle);
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.nav-dropdown-container:hover .nav-dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    color: #333;
+    padding: 0.75rem 1.25rem;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    transition: all 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: #f9f9f9;
+    color: var(--color-primary);
+    padding-left: 1.5rem;
+    /* Slight shift effect */
+}
+
+/* ── Mega Menu (Services / Horoscope) ── */
+.nav-mega-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1.25rem;
+    width: 560px;
+    max-width: 90vw;
+}
+
+.nav-mega-item {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.95);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.nav-mega-img-wrap {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    background: rgba(212, 175, 55, 0.08);
+}
+
+.nav-mega-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+}
+
+.nav-mega-text {
+    padding: 0 0.9rem 0.9rem;
+}
+
+.nav-mega-title {
+    font-weight: 800;
+    color: #5D1916;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.nav-mega-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.nav-mega-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.55);
+    box-shadow: 0 12px 35px rgba(93, 25, 22, 0.15);
+}
+
+.nav-mega-item:hover .nav-mega-img {
+    transform: scale(1.06);
+}
+
+.nav-mega-grid--services {
+    /* 5 items look best with slightly wider menu */
+    width: 620px;
+}
+
+.nav-mega-grid--horoscope {
+    width: 560px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
