@@ -1,12 +1,37 @@
 import { Link } from 'react-router-dom'
-import { FiArrowRight, FiShield, FiTrendingUp, FiCheck, FiStar, FiUser, FiGlobe } from 'react-icons/fi'
-import { RiStarSFill, RiDoubleQuotesL } from 'react-icons/ri'
+import { FiArrowRight, FiShield, FiCheck, FiStar } from 'react-icons/fi'
+import { RiStarSFill } from 'react-icons/ri'
 import ParticleTextEffect from '../components/ui/ParticleTextEffect'
 import CobeGlobe from '../components/ui/CobeGlobe'
 import harshitHeroImg from '../assets/harshit_hero.png'
+import ajaiBhambiImg from '../assets/ajai_bhambi.png'
+import deepakKapoorImg from '../assets/deepak_kapoor.png'
+import gdVashistImg from '../assets/gd_vashist.png'
+import hemantBaruaImg from '../assets/hemant_barua.png'
+import induPrakashImg from '../assets/indu_prakash.png'
+import knRaoImg from '../assets/kn_rao.png'
+import premSharmaImg from '../assets/prem_sharma.png'
+import sandeepKocharImg from '../assets/sandeep_kochar.png'
+import sanjayJumaaniImg from '../assets/sanjay_jumaani.png'
+import sohiniShastriImg from '../assets/sohini_shastri.png'
 import './HomePage.css'
 
 export default function HomePage() {
+    const heroProofFaces = [ajaiBhambiImg, deepakKapoorImg, gdVashistImg, hemantBaruaImg, induPrakashImg]
+
+    const proofItems = [
+        { image: ajaiBhambiImg, caption: 'With Industry CEOs at Global Leadership Summit' },
+        { image: deepakKapoorImg, caption: 'Invited Speaker at National Governance Forum' },
+        { image: gdVashistImg, caption: 'Awarded Best Astrologer 2023 (Public Recognition)' },
+        { image: hemantBaruaImg, caption: 'Private Strategy Session with Startup Founders' },
+        { image: induPrakashImg, caption: 'VIP Consultation Circle for Policy Advisors' },
+        { image: knRaoImg, caption: 'Mentoring Next-Gen Business Leaders' },
+        { image: premSharmaImg, caption: 'Exclusive Wealth Guidance Roundtable' },
+        { image: sandeepKocharImg, caption: 'Invited Address at Entrepreneurship Conclave' },
+        { image: sanjayJumaaniImg, caption: 'Featured Guest at Premium Investor Event' },
+        { image: sohiniShastriImg, caption: 'High-Profile Consultation Panel Appearance' },
+    ]
+
     return (
         <div className="home-page">
             {/* ── 1. Hero Section ── */}
@@ -51,6 +76,14 @@ export default function HomePage() {
                             Gain instant clarity on your career, relationships, and destiny with
                             precision Vedic astrology readings powered by advanced AI.
                         </p>
+                        <p className="hero-authority animate-in" style={{ animationDelay: '0.24s' }}>
+                            Trusted by 500+ Business Leaders, Celebrities & Government Officials
+                        </p>
+                        <div className="hero-proof-faces animate-in" style={{ animationDelay: '0.28s' }}>
+                            {heroProofFaces.map((face, idx) => (
+                                <img key={idx} src={face} alt="" className="hero-proof-face" />
+                            ))}
+                        </div>
                         <div className="hero-actions animate-in" style={{ animationDelay: '0.3s' }}>
                             <Link to="/book" className="btn btn-primary">
                                 Get Your Reading <FiArrowRight />
@@ -75,60 +108,135 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ── 2. How It Works ── */}
-            <section className="steps-section">
+            {/* ── 2. Social Proof Wall ── */}
+            <section className="authority-wall-section">
                 <div className="container">
-                    <h2 className="section-title">How It Works</h2>
-                    <div className="steps-grid">
-                        <div className="step-card glass-panel">
-                            <div className="step-number">01</div>
-                            <h3>Enter Details</h3>
-                            <p>Share your birth date, time, and location to generate your unique chart.</p>
+                    <div className="authority-top-row">
+                        <h2 className="section-title authority-title">Authority & Social Proof</h2>
+                        <div className="authority-top-globe">
+                            <CobeGlobe />
                         </div>
-                        <div className="step-card glass-panel">
-                            <div className="step-number">02</div>
-                            <h3>AI Analysis</h3>
-                            <p>Our AI analyzes planetary positions, dashas, and yogas instantly.</p>
+                    </div>
+                    <div className="authority-featured">
+                        <div className="authority-featured-image-wrap">
+                            <img src={harshitHeroImg} alt="Featured authority moment" className="authority-featured-image" />
                         </div>
-                        <div className="step-card glass-panel">
-                            <div className="step-number">03</div>
-                            <h3>Get Guidance</h3>
-                            <p>Receive a detailed, easy-to-understand report with actionable remedies.</p>
+                        <div className="authority-featured-content">
+                            <h3>A Trusted Advisor to High-Impact Decision Makers</h3>
+                            <p>
+                                From boardrooms to public stages, Dr. Harshit provides strategic Vedic guidance
+                                to leaders handling high-stakes decisions in business, governance, and personal growth.
+                            </p>
+                            <ul className="authority-checklist">
+                                <li><FiCheck className="text-gold" /> Strategic consultations for entrepreneurs and CXOs</li>
+                                <li><FiCheck className="text-gold" /> Invited speaker at premium leadership events</li>
+                                <li><FiCheck className="text-gold" /> Recognized for practical, action-focused guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className="proof-grid">
+                        {proofItems.map((item, idx) => (
+                            <div className="proof-item" key={idx}>
+                                <img src={item.image} alt={item.caption} className="proof-image" />
+                                <p className="proof-caption">{item.caption}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            {/* ── 3. Featured Moments ── */}
+            <section className="featured-moments-section">
+                <div className="container">
+                    <h2 className="section-title">Featured Moments</h2>
+
+                    <div className="featured-story-row">
+                        <img src={deepakKapoorImg} alt="Trusted by top entrepreneurs" className="featured-story-image" />
+                        <div className="featured-story-content">
+                            <h3>Trusted by India’s Top Entrepreneurs</h3>
+                            <p>
+                                Guided founders and investors on expansion timing, partnerships, and key financial decisions
+                                through practical Vedic intelligence.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="featured-story-row reverse">
+                        <img src={sandeepKocharImg} alt="Government and public platform presence" className="featured-story-image" />
+                        <div className="featured-story-content">
+                            <h3>Invited on Public and Policy Platforms</h3>
+                            <p>
+                                Invited to share predictive frameworks and remedial insights in forums where clarity,
+                                trust, and responsibility matter most.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="featured-story-row">
+                        <img src={knRaoImg} alt="Personalized guidance stories" className="featured-story-image" />
+                        <div className="featured-story-content">
+                            <h3>Personalized Guidance with Measurable Outcomes</h3>
+                            <p>
+                                Every consultation is tailored to individual timelines, helping clients convert uncertainty
+                                into structured action plans.
+                            </p>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ── 3. Trust Section ── */}
-            <section className="trust-section">
+            {/* ── 4. Media & Awards ── */}
+            <section className="media-awards-section">
                 <div className="container">
-                    <div className="trust-grid">
-                        <div className="trust-item">
-                            <FiUser className="trust-icon" />
-                            <div className="trust-text">
-                                <h4>10,000+</h4>
-                                <p>Happy Users</p>
-                            </div>
+                    <h2 className="section-title">Media & Awards</h2>
+                    <div className="media-logo-row">
+                        <div className="media-logo">Business Times</div>
+                        <div className="media-logo">National TV</div>
+                        <div className="media-logo">Leadership Summit</div>
+                        <div className="media-logo">Astrology Awards</div>
+                        <div className="media-logo">Entrepreneur Forum</div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── 5. Exclusivity Psychology ── */}
+            <section className="exclusivity-section">
+                <div className="container">
+                    <h2 className="section-title">Exclusive Access</h2>
+                    <div className="exclusivity-box">
+                        <p><FiStar className="text-gold" /> Limited daily consultations to maintain premium quality</p>
+                        <p><FiStar className="text-gold" /> Works with high-profile clients and decision-makers</p>
+                        <p><FiStar className="text-gold" /> Appointment slots fill quickly — early booking recommended</p>
+                        <Link to="/book" className="btn btn-primary">
+                            Reserve Priority Slot <FiArrowRight />
+                        </Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* ── 6. Video Proof ── */}
+            <section className="video-proof-section">
+                <div className="container">
+                    <h2 className="section-title">Video Proof</h2>
+                    <div className="video-proof-grid">
+                        <div className="video-proof-card">
+                            <img src={ajaiBhambiImg} alt="Event clip thumbnail" className="video-proof-thumb" />
+                            <div className="video-proof-overlay">▶ Event Stage Clip</div>
                         </div>
-                        <div className="trust-item">
-                            <FiShield className="trust-icon" />
-                            <div className="trust-text">
-                                <h4>Privacy First</h4>
-                                <p>Data Not Stored</p>
-                            </div>
+                        <div className="video-proof-card">
+                            <img src={premSharmaImg} alt="Consultation clip thumbnail" className="video-proof-thumb" />
+                            <div className="video-proof-overlay">▶ VIP Meeting Clip</div>
                         </div>
-                        <div className="trust-item">
-                            <FiGlobe className="trust-icon" />
-                            <div className="trust-text">
-                                <h4>Vedic Accuracy</h4>
-                                <p>Ancient Wisdom</p>
-                            </div>
+                        <div className="video-proof-card">
+                            <img src={sohiniShastriImg} alt="Panel clip thumbnail" className="video-proof-thumb" />
+                            <div className="video-proof-overlay">▶ Panel Session Clip</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ── 4. Product Preview ── */}
+            {/* ── Legacy Section Restored: Moving Globe + Insights ── */}
             <section className="preview-section">
                 <div className="container">
                     <div className="preview-layout">
@@ -151,7 +259,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ── 5. Pricing ── */}
+            {/* ── 7. Pricing ── */}
             <section className="pricing-section">
                 <div className="container">
                     <h2 className="pricing-title-top section-title section-title--pricing">Simple Pricing</h2>
@@ -183,7 +291,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ── 6. Final CTA ── */}
+            {/* ── 8. Final CTA ── */}
             <section className="final-cta-section">
                 <div className="container text-center">
                     <h2 className="cta-title">Start Your Cosmic Journey</h2>
