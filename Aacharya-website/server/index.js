@@ -29,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 // ── Routes ──
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/services', require('./routes/serviceRoutes'));
+app.use('/api/guna-milan', require('./routes/gunaMilanRoutes'));
 app.use('/api/appointments', require('./routes/appointmentRoutes'));
 app.use('/api/reports', require('./routes/reportRoutes'));
 app.use('/api/articles', require('./routes/articleRoutes'));
