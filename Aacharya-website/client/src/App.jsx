@@ -8,6 +8,7 @@ import ServiceDetailPage from './pages/ServiceDetailPage'
 import KundliMatchingPage from './pages/KundliMatchingPage'
 import BookingPage from './pages/BookingPage'
 import ReportsPage from './pages/ReportsPage'
+import ReportOrderPage from './pages/ReportOrderPage'
 import BlogPage from './pages/BlogPage'
 import ArticleDetailPage from './pages/ArticleDetailPage'
 import ContactPage from './pages/ContactPage'
@@ -50,6 +51,7 @@ function App() {
                     <Route path="/book-puja" element={<BookPujaPage />} />
                     <Route path="/book" element={<BookingPage />} />
                     <Route path="/reports" element={<ReportsPage />} />
+                    <Route path="/reports/order/:reportId" element={<ReportOrderPage />} />
                     <Route path="/blog" element={<BlogPage />} />
                     <Route path="/blog/:slug" element={<ArticleDetailPage />} />
                     <Route path="/contact" element={<ContactPage />} />
