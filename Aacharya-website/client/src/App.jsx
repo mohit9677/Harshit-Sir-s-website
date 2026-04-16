@@ -5,8 +5,14 @@ import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
 import ServiceDetailPage from './pages/ServiceDetailPage'
+import KundliMatchingPage from './pages/KundliMatchingPage'
+import JanamKundliPage from './pages/JanamKundliPage'
+import VastuConsultationPage from './pages/VastuConsultationPage'
+import PalmistryPage from './pages/PalmistryPage'
+import FaceReadingPage from './pages/FaceReadingPage'
 import BookingPage from './pages/BookingPage'
 import ReportsPage from './pages/ReportsPage'
+import ReportOrderPage from './pages/ReportOrderPage'
 import BlogPage from './pages/BlogPage'
 import ArticleDetailPage from './pages/ArticleDetailPage'
 import ContactPage from './pages/ContactPage'
@@ -35,7 +41,13 @@ function App() {
             <main>
                 <Routes>
                     <Route path="/" element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
                     <Route path="/services" element={<ServicesPage />} />
+                    <Route path="/services/kundli-matching" element={<KundliMatchingPage />} />
+                    <Route path="/services/janam-kundli" element={<JanamKundliPage />} />
+                    <Route path="/services/vastu-consultation" element={<VastuConsultationPage />} />
+                    <Route path="/services/palmistry" element={<PalmistryPage />} />
+                    <Route path="/services/face-reading" element={<FaceReadingPage />} />
                     <Route path="/services/:slug" element={<ServiceDetailPage />} />
                     <Route path="/horoscope/:type" element={<HoroscopePage />} />
                     <Route path="/panchang" element={<PanchangPage />} />
@@ -47,6 +59,7 @@ function App() {
                     <Route path="/book-puja" element={<BookPujaPage />} />
                     <Route path="/book" element={<BookingPage />} />
                     <Route path="/reports" element={<ReportsPage />} />
+                    <Route path="/reports/order/:reportId" element={<ReportOrderPage />} />
                     <Route path="/blog" element={<BlogPage />} />
                     <Route path="/blog/:slug" element={<ArticleDetailPage />} />
                     <Route path="/contact" element={<ContactPage />} />
