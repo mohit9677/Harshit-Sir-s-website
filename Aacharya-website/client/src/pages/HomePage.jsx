@@ -169,6 +169,18 @@ export default function HomePage() {
             badge: 'Client Impact',
         },
     ]
+    const popularAstrologyServices = [
+        { label: 'Love', icon: '❤️' },
+        { label: 'Career', icon: '💼' },
+        { label: 'Marriage', icon: '💍' },
+        { label: 'Health', icon: '🩺' },
+        { label: 'Finance', icon: '💰' },
+        { label: 'Education', icon: '🎓' },
+        { label: 'Business', icon: '📈' },
+        { label: 'Foreign Travel', icon: '✈️' },
+        { label: 'Pregnancy', icon: '👶' },
+        { label: 'Legal', icon: '⚖️' },
+    ]
 
     useEffect(() => {
         console.log('Podcast Gallery Version: 1.0.4 (Full Imagery Ready)');
@@ -548,29 +560,50 @@ export default function HomePage() {
             {/* ── 3. Featured Moments ── */}
             <section className="featured-moments-section">
                 <div className="container">
-                    <ScaleLetterHeading as="h2" className="section-title" text="Featured Moments" />
-                    <div className="featured-story-list">
-                        {featuredMoments.map((moment, index) => (
-                            <article
-                                key={moment.id}
-                                className={`featured-story-row ${moment.id === 'policy-forums' ? 'featured-story-row--image-right' : (index % 2 === 1 ? 'reverse' : '')}`}
-                            >
-                                <div className="featured-story-media-card">
-                                    <img
-                                        src={moment.image}
-                                        alt={moment.alt}
-                                        className="featured-story-image"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </div>
-                                <div className="featured-story-content">
-                                    <span className="featured-story-badge">{moment.badge}</span>
-                                    <h3>{moment.title}</h3>
-                                    <p>{moment.summary}</p>
-                                </div>
-                            </article>
-                        ))}
+                    <div className="featured-moments-layout">
+                        <div>
+                            <ScaleLetterHeading as="h2" className="section-title" text="Featured Moments" />
+                            <div className="featured-story-list">
+                                {featuredMoments.map((moment, index) => (
+                                    <article
+                                        key={moment.id}
+                                        className={`featured-story-row ${moment.id === 'policy-forums' ? 'featured-story-row--image-right' : (index % 2 === 1 ? 'reverse' : '')}`}
+                                    >
+                                        <div className="featured-story-media-card">
+                                            <img
+                                                src={moment.image}
+                                                alt={moment.alt}
+                                                className="featured-story-image"
+                                                loading="lazy"
+                                                decoding="async"
+                                            />
+                                        </div>
+                                        <div className="featured-story-content">
+                                            <span className="featured-story-badge">{moment.badge}</span>
+                                            <h3>{moment.title}</h3>
+                                            <p>{moment.summary}</p>
+                                        </div>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                        <aside className="popular-services-panel" aria-label="Popular astrology services">
+                            <h3 className="popular-services-title">Popular Astrology Services</h3>
+                            <div className="popular-services-list">
+                                {popularAstrologyServices.map((service) => (
+                                    <button
+                                        key={service.label}
+                                        type="button"
+                                        className="popular-service-glass-card"
+                                        aria-label={service.label}
+                                        title={service.label}
+                                    >
+                                        <span className="popular-service-icon" aria-hidden="true">{service.icon}</span>
+                                        <span className="popular-service-label">{service.label}</span>
+                                    </button>
+                                ))}
+                            </div>
+                        </aside>
                     </div>
                 </div>
             </section>
