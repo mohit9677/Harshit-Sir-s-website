@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react'
+import { Suspense, lazy, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FiArrowRight, FiShield, FiCheck, FiStar } from 'react-icons/fi'
 import ScaleLetterHeading from '../components/ui/ScaleLetterHeading'
-import LinearCardGallery from '../components/ui/LinearCardGallery'
-import BrillianceAwardsShowcase from '../components/awards/BrillianceAwardsShowcase'
-import { SlideTabs } from '../components/ui/slide-tabs'
 import CircularGallerySection from '../components/ui/CircularGallerySection'
 import harshitHeroImg from '../assets/harshit_hero.webp'
 import authorityFeaturedImg from '../assets/authority_reading_nakshatras.webp'
@@ -14,10 +11,8 @@ import gdVashistImg from '../assets/gd_vashist.webp'
 import hemantBaruaImg from '../assets/hemant_barua.webp'
 import induPrakashImg from '../assets/indu_prakash.webp'
 import knRaoImg from '../assets/kn_rao.webp'
-import premSharmaImg from '../assets/prem_sharma.webp'
 import sandeepKocharImg from '../assets/sandeep_kochar.webp'
 import sanjayJumaaniImg from '../assets/sanjay_jumaani.webp'
-import sohiniShastriImg from '../assets/sohini_shastri.webp'
 import bharatShreeNew1Img from '../assets/bharat_shree_new_1.webp'
 import bharatShreeNew2Img from '../assets/bharat_shree_new_2.webp'
 import bharatShreeNew3Img from '../assets/bharat_shree_new_3.webp'
@@ -33,11 +28,12 @@ import marqueeDaisyShah from '../assets/marquee_daisy_shah.webp'
 import marqueeBhagyashree from '../assets/marquee_bhagyashree.webp'
 import marqueeAnchalMunjal from '../assets/marquee_anchal_munjal.webp'
 import eiaWithActressImg from '../assets/eia_with_actress.webp'
-import cardLiveConsultation from '../assets/card_live_consultation_updated.png'
-import cardFaceReading from '../assets/card_face_reading_updated.png'
-import cardPalmistry from '../assets/card_palmistry_updated.png'
+import cardLiveConsultation from '../assets/card_live_consultation_updated.webp'
+import cardFaceReading from '../assets/card_face_reading_updated.webp'
+import cardPalmistry from '../assets/card_palmistry_updated.webp'
 import cardNumerology from '../assets/numerology_course.webp'
 import bestAwardGlobalImg from '../assets/best_award_global.webp'
+import rahulGuptaPodcastImg from '../assets/podcast_rahul_gupta_show.webp'
 import podcastRussianAnchor from '../assets/podcast_russian_anchor.webp'
 import podcastMukeshAmbani from '../assets/podcast_mukesh_ambani.webp'
 import podcastEktaKapoor from '../assets/podcast_ekta_kapoor.webp'
@@ -50,15 +46,23 @@ import podcastJyotirling from '../assets/podcast_jyotirling.webp'
 import podcastJyotirling2 from '../assets/podcast_jyotirling_2.webp'
 import podcastSamudraManthan from '../assets/podcast_samudra_manthan.webp'
 import podcastGangaChandrama from '../assets/podcast_ganga_chandrama.webp'
-import homeFeaturedMoment1 from '../assets/home_featured_moment_1.png'
-import homeFeaturedMoment2 from '../assets/home_featured_moment_2.png'
+import homeFeaturedMoment1 from '../assets/home_featured_moment_1.webp'
+import homeFeaturedMoment2 from '../assets/home_featured_moment_2.webp'
 import bestAwardAnchalImg from '../assets/best_award_anchal_munjal.webp'
 import bestAwardHariRawatImg from '../assets/best_award_hari_singh_rawat.webp'
 import bestAwardAtalImg from '../assets/best_award_atal.webp'
 import bestAward2024Img from '../assets/best_award_2024.webp'
 import './HomePage.css'
 
+const LinearCardGallery = lazy(() => import('../components/ui/LinearCardGallery'))
+const BrillianceAwardsShowcase = lazy(() => import('../components/awards/BrillianceAwardsShowcase'))
+const SlideTabs = lazy(() =>
+    import('../components/ui/slide-tabs').then((mod) => ({ default: mod.SlideTabs }))
+)
+
 export default function HomePage() {
+    const podcastChannelUrl = 'https://www.youtube.com/@dr_kunwar_harshit'
+
     const heroMarqueeFaces = [
         { src: marqueeEshaDeol, alt: 'Esha Deol' },
         { src: marqueeMannara, alt: 'Mannara Chopra' },
@@ -145,28 +149,28 @@ export default function HomePage() {
             id: 'entrepreneurs',
             image: homeFeaturedMoment1,
             alt: "Dr. Kunwar Harshit Rajveer with top entrepreneurs",
-            title: "Trusted by India's Top Entrepreneurs",
+            title: 'Bharat Shree Award with Actor Rajveer Verma',
             summary:
-                'Guided founders and investors on expansion timing, partnerships, and key financial decisions through practical Vedic intelligence.',
-            badge: 'Leadership Guidance',
+                'Honored at Bharat Shree National Conference & Summit 2024 for impactful contribution through Vedic guidance, trusted consultations, and meaningful public spiritual outreach.',
+            badge: 'Celebrity',
         },
         {
             id: 'policy-forums',
             image: homeFeaturedMoment2,
             alt: 'Dr. Kunwar Harshit Rajveer at a policy and public forum',
-            title: 'Invited on Public and Policy Platforms',
+            title: 'With International Astrologer Dr. Hari Singh Rawat',
             summary:
-                'Invited to share predictive frameworks and remedial insights in forums where clarity, trust, and responsibility matter most.',
-            badge: 'Public Platform',
+                'Received blessings and guidance from renowned international astrologer Dr. Hari Singh Rawat.',
+            badge: 'International',
         },
         {
             id: 'personalized-outcomes',
-            image: homeFeaturedMoment1,
-            alt: 'Personalized client consultation moment',
-            title: 'Personalized Guidance with Measurable Outcomes',
+            image: rahulGuptaPodcastImg,
+            alt: 'The Rahul Gupta Show podcast with Dr. Kunwar Harshit Rajveer',
+            title: 'The Rahul Gupta Show | Dr. Kunwar Harshit Rajveer',
             summary:
-                'Every consultation is tailored to individual timelines, helping clients convert uncertainty into structured action plans.',
-            badge: 'Client Impact',
+                'Featured on The Rahul Gupta Show, Dr. Kunwar Harshit Rajveer shares practical Jyotish insights in simple language, covering real-life guidance, spiritual clarity, and actionable remedies for everyday challenges.',
+            badge: 'Podcast | Shows',
         },
     ]
     const popularAstrologyServices = [
@@ -185,34 +189,6 @@ export default function HomePage() {
     useEffect(() => {
         console.log('Podcast Gallery Version: 1.0.4 (Full Imagery Ready)');
     }, []);
-
-    const videoProofItems = [
-        {
-            image: ajaiBhambiImg,
-            title: 'Event Stage Highlights',
-            subtitle: 'SPIRITUAL GROWTH SERIES',
-        },
-        {
-            image: premSharmaImg,
-            title: 'VIP Strategy Discussion',
-            subtitle: 'EXCLUSIVE INTERVIEW',
-        },
-        {
-            image: sohiniShastriImg,
-            title: 'Panel Session Insights',
-            subtitle: 'SPECIAL EPISODE',
-        },
-        {
-            image: deepakKapoorImg,
-            title: 'Leadership Forum Clip',
-            subtitle: 'PUBLIC TALK FEATURE',
-        },
-        {
-            image: sandeepKocharImg,
-            title: 'Investor Roundtable',
-            subtitle: 'PODCAST MOMENTS',
-        },
-    ]
 
     const focusFeatures = [
         'Career & Business',
@@ -548,7 +524,9 @@ export default function HomePage() {
                                 <h3 className="authority-gallery-heading">
                                     Explore our astrology services
                                 </h3>
-                                <LinearCardGallery items={authorityLinearGalleryItems} />
+                                <Suspense fallback={null}>
+                                    <LinearCardGallery items={authorityLinearGalleryItems} />
+                                </Suspense>
                             </div>
 
                         </div>
@@ -567,7 +545,11 @@ export default function HomePage() {
                                 {featuredMoments.map((moment, index) => (
                                     <article
                                         key={moment.id}
-                                        className={`featured-story-row ${moment.id === 'policy-forums' ? 'featured-story-row--image-right' : (index % 2 === 1 ? 'reverse' : '')}`}
+                                        className={`featured-story-row ${
+                                            moment.id === 'policy-forums'
+                                                ? 'featured-story-row--image-right'
+                                                : (index % 2 === 1 ? 'reverse' : '')
+                                        } ${moment.id === 'personalized-outcomes' ? 'featured-story-row--podcast' : ''}`}
                                     >
                                         <div className="featured-story-media-card">
                                             <img
@@ -613,21 +595,25 @@ export default function HomePage() {
                 <div className="container">
                     <ScaleLetterHeading as="h2" className="section-title" text="Legacy of Excellence" />
                     <div>
-                        <SlideTabs
-                            tabs={mediaTabData.map((t) => t.label)}
-                            selectedIndex={Math.max(0, mediaTabData.findIndex((t) => t.id === activeMediaTab))}
-                            onSelect={(index) => {
-                                const next = mediaTabData[index];
-                                if (next) setActiveMediaTab(next.id);
-                            }}
-                        />
+                        <Suspense fallback={null}>
+                            <SlideTabs
+                                tabs={mediaTabData.map((t) => t.label)}
+                                selectedIndex={Math.max(0, mediaTabData.findIndex((t) => t.id === activeMediaTab))}
+                                onSelect={(index) => {
+                                    const next = mediaTabData[index];
+                                    if (next) setActiveMediaTab(next.id);
+                                }}
+                            />
+                        </Suspense>
                     </div>
                 </div>
             </section>
 
             {/* ── 4b. Tab Content Panel (full-width) ── */}
             {activeTab?.id === 'awards-summit' ? (
-                <BrillianceAwardsShowcase />
+                <Suspense fallback={null}>
+                    <BrillianceAwardsShowcase />
+                </Suspense>
             ) : activeTab?.id === 'national-tv' ? (
                 <section className="eia-showcase-section">
                     <div className="eia-showcase-inner">
@@ -780,8 +766,12 @@ export default function HomePage() {
                             <div className="services-marquee-track-wrapper">
                                 <div className="services-row services-row-track">
                                     {[...servicesRow1, ...servicesRow1].map((service, index) => (
-                                        <article
+                                        <a
                                             key={`row1-card-${index}`}
+                                            href={podcastChannelUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`Open YouTube channel from ${service.title} card`}
                                             className={`service-card ${service.image ? '' : 'service-card-no-image'}`}
                                             style={service.image ? { backgroundImage: `url(${service.image})` } : undefined}
                                         >
@@ -791,7 +781,7 @@ export default function HomePage() {
                                                 <h3>{service.title}</h3>
                                                 <p>{service.subtitle}</p>
                                             </div>
-                                        </article>
+                                        </a>
                                     ))}
                                 </div>
                             </div>
@@ -802,8 +792,12 @@ export default function HomePage() {
                             <div className="services-marquee-track-wrapper">
                                 <div className="services-row services-row-track">
                                     {[...servicesRow2.filter(Boolean), ...servicesRow2.filter(Boolean)].map((service, index) => (
-                                        <article
+                                        <a
                                             key={`row2-card-${index}`}
+                                            href={podcastChannelUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            aria-label={`Open YouTube channel from ${service.title} card`}
                                             className={`service-card ${service.image ? '' : 'service-card-no-image'}`}
                                             style={service.image ? { backgroundImage: `url(${service.image})` } : undefined}
                                         >
@@ -813,7 +807,7 @@ export default function HomePage() {
                                                 <h3>{service.title}</h3>
                                                 <p>{service.subtitle}</p>
                                             </div>
-                                        </article>
+                                        </a>
                                     ))}
                                 </div>
                             </div>
@@ -821,35 +815,6 @@ export default function HomePage() {
                     </div>
                 </div>
             </section>
-
-            {/* ── 6. Video Proof ── */}
-            <section className="video-proof-section">
-                <div className="container">
-                    <ScaleLetterHeading
-                        as="h2"
-                        className="section-title video-proof-title"
-                        parts={[
-                            { text: 'Explore our ' },
-                            { text: 'podcast', className: 'text-gold' },
-                        ]}
-                    />
-                    <div className="video-proof-grid">
-                        {videoProofItems.map((item, idx) => (
-                            <div className="video-proof-card" key={`${item.title}-${idx}`}>
-                                <img src={item.image} alt={`${item.title} thumbnail`} className="video-proof-thumb" loading="lazy" decoding="async" />
-                                <div className="video-proof-watch">◉ WATCH NOW</div>
-                                <div className="video-proof-content">
-                                    <h3>{item.title}</h3>
-                                    <p>{item.subtitle}</p>
-                                    <button type="button" className="video-proof-btn">Watch Episode</button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            
 
             {/* ── 8. Final CTA ── */}
             <section className="final-cta-section">

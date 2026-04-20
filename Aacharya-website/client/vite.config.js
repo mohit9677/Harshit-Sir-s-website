@@ -21,4 +21,23 @@ export default defineConfig({
             },
         },
     },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (!id.includes('node_modules')) return
+                    if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+                        return 'vendor-react'
+                    }
+                    if (id.includes('framer-motion') || id.includes('three') || id.includes('cobe')) {
+                        return 'vendor-graphics'
+                    }
+                    if (id.includes('react-icons') || id.includes('react-hot-toast')) {
+                        return 'vendor-ui'
+                    }
+                    return 'vendor'
+                },
+            },
+        },
+    },
 })

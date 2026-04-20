@@ -1,6 +1,6 @@
 import loveReportImg from '../assets/lovereport.webp'
 import lifeJourneyImg from '../assets/lifejourney.webp'
-import numberAnalysisImg from '../assets/numberanalysis.png'
+import numberAnalysisImg from '../assets/numberanalysis.webp'
 import govtJobImg from '../assets/govtjob.webp'
 import lifeChangingReportImg from '../assets/lifechangingreport.webp'
 import wealthReportImg from '../assets/wealth&report.webp'

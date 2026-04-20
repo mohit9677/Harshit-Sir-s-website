@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import '../App.css';
 import './NumerologyPage.css';
-import numerologyBg from '../assets/numerologyBg.png';
+import numerologyBg from '../assets/numerologyBg.webp';
 
 /* ────────────────────────────────────────────────
    Data — each number gets a real Unsplash image
