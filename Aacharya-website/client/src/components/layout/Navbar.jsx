@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { FiMenu, FiX, FiChevronDown, FiPhone, FiVideo, FiUser } from 'react-icons/fi'
+import { FiMenu, FiX, FiChevronDown, FiPhone, FiVideo, FiUser, FiHome, FiBookOpen, FiArchive, FiShoppingCart, FiSun } from 'react-icons/fi'
 import logo from '../../assets/logo.svg'
 import megaKundliMatching from '../../assets/mega_kundli_matching.webp'
 import megaJanamKundli from '../../assets/mega_janam_kundli.webp'
@@ -335,19 +335,24 @@ export default function Navbar() {
         {/* Mobile/Tablet bottom navigation */}
         <nav className="mobile-bottom-nav" aria-label="Mobile quick navigation">
             <NavLink to="/" end className={({ isActive }) => `mobile-tab-link ${isActive ? 'active' : ''}`}>
-                Home
+                <FiHome className="mobile-tab-icon" />
+                <span>Home</span>
             </NavLink>
             <NavLink to="/learning" className={({ isActive }) => `mobile-tab-link ${isActive ? 'active' : ''}`}>
-                Digital Learning
+                <FiBookOpen className="mobile-tab-icon" />
+                <span>Digital Learning</span>
             </NavLink>
             <NavLink to="/mandir" className={({ isActive }) => `mobile-tab-link ${isActive ? 'active' : ''}`}>
-                Digital Mandir
+                <FiArchive className="mobile-tab-icon" />
+                <span>Digital Mandir</span>
             </NavLink>
             <NavLink to="/mart" className={({ isActive }) => `mobile-tab-link ${isActive ? 'active' : ''}`}>
-                Digital Mart
+                <FiShoppingCart className="mobile-tab-icon" />
+                <span>Digital Mart</span>
             </NavLink>
             <NavLink to="/book-puja" className={({ isActive }) => `mobile-tab-link ${isActive ? 'active' : ''}`}>
-                Book Puja
+                <FiSun className="mobile-tab-icon" />
+                <span>Book Puja</span>
             </NavLink>
         </nav>
 

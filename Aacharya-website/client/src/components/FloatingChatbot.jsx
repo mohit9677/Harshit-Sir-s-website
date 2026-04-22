@@ -20,8 +20,8 @@ const getPhoneHeight = () => {
     let maxHeight = 520;
     
     if (isMobile) {
-        offset = 12 + 100 + 8 + 10;
-        maxHeight = 460;
+        offset = 90 + 100 + 8 + 10;  // 90px = bottom navbar height + safe area
+        maxHeight = 420;
     } else if (isTablet) {
         offset = 24 + 120 + 16 + 10;
         maxHeight = 480;
@@ -133,11 +133,12 @@ const FloatingChatbot = () => {
                     }
                 }
 
-                /* ── Mobile (≤640px) — stay bottom-right, just shrink frame ── */
+                /* ── Mobile (≤640px) — float above the bottom nav bar ── */
                 @media (max-width: 640px) {
                     .ai-chatbot-root {
-                        bottom: 12px;
+                        bottom: 82px; /* sit above the ~80px bottom navbar */
                         right: 12px;
+                        z-index: 1002;
                     }
                     .ai-phone-frame {
                         width: 260px;

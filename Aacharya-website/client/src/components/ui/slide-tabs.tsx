@@ -87,17 +87,28 @@ export const SlideTabs = ({
         style={{
           position: "relative",
           margin: "0 auto",
-          display: "flex",
-          width: "fit-content",
-          maxWidth: "100%",
-          flexWrap: isCompact ? "wrap" : "nowrap",
-          justifyContent: "center",
           listStyle: "none",
           padding: "6px",
-          borderRadius: "999px",
           border: "2px solid #111",
           background: "#fff",
-          alignItems: "center",
+          ...(isCompact
+            ? {
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "6px",
+                borderRadius: "20px",
+                width: "calc(100% - 32px)",
+                maxWidth: "400px",
+              }
+            : {
+                display: "flex",
+                width: "fit-content",
+                maxWidth: "100%",
+                flexWrap: "nowrap",
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: "999px",
+              }),
         }}
       >
         {safeTabs.map((tab, i) => (
@@ -144,26 +155,29 @@ const Tab = React.forwardRef<HTMLLIElement, TabProps>(
         style={{
           position: "relative",
           zIndex: 10,
-          display: "block",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           cursor: "pointer",
           listStyle: "none",
-          margin: isCompact ? "2px" : "0",
+          margin: isCompact ? "0" : "0",
           padding: isCompact
-            ? "clamp(6px, 1.8vw, 9px) clamp(10px, 2.2vw, 14px)"
+            ? "clamp(8px, 2vw, 12px) clamp(6px, 2vw, 10px)"
             : "clamp(8px, 1.8vw, 12px) clamp(12px, 2.6vw, 24px)",
-          fontSize: isCompact ? "clamp(10px, 2.8vw, 12px)" : "clamp(12px, 1.6vw, 14px)",
+          fontSize: isCompact ? "clamp(9px, 2.4vw, 11px)" : "clamp(12px, 1.6vw, 14px)",
           fontWeight: 700,
           textTransform: "uppercase",
           color: isCompact ? (isActive ? "#fff" : "#111") : "#fff",
           mixBlendMode: isCompact ? "normal" : "difference",
           userSelect: "none",
-          borderRadius: "999px",
-          whiteSpace: isCompact ? "normal" : "nowrap",
+          borderRadius: "14px",
+          whiteSpace: "normal",
           textAlign: "center",
-          lineHeight: 1.2,
-          maxWidth: isCompact ? "210px" : "none",
-          background: isCompact ? (isActive ? "#111" : "transparent") : "transparent",
+          lineHeight: 1.25,
+          minHeight: isCompact ? "52px" : "auto",
+          background: isCompact ? (isActive ? "#111" : "#f5f5f5") : "transparent",
           transition: "background 180ms ease, color 180ms ease",
+          boxSizing: "border-box",
         }}
       >
         {children}
