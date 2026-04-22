@@ -158,7 +158,15 @@ export default function ServiceShowcasePage({ config }) {
   }
 
   const durationOptions = useMemo(
-    () => ['all', ...Array.from(new Set(config.services.map((s) => s.duration)))],
+    () => {
+      const uniqueDurations = Array.from(new Set(config.services.map((s) => s.duration)))
+      const toMinutes = (value) => {
+        const match = value.match(/\d+/)
+        return match ? Number(match[0]) : Number.MAX_SAFE_INTEGER
+      }
+      uniqueDurations.sort((a, b) => toMinutes(a) - toMinutes(b) || a.localeCompare(b))
+      return ['all', ...uniqueDurations]
+    },
     [config.services]
   )
 
@@ -183,6 +191,13 @@ export default function ServiceShowcasePage({ config }) {
       {activeModal && <ServiceModal service={activeModal} onClose={() => setActiveModal(null)} />}
 
       <section className="km-hero">
+        {config.heroBgImage && (
+          <div
+            className="ss-hero-side-bg"
+            aria-hidden="true"
+            style={{ backgroundImage: `url(${config.heroBgImage})` }}
+          />
+        )}
         <div className="container km-hero-inner">
           <div className="km-hero-text">
             <div className="km-hero-badge">{config.heroBadge}</div>
@@ -204,8 +219,59 @@ export default function ServiceShowcasePage({ config }) {
             </div>
           </div>
 
-          <div className="km-hero-visual" aria-hidden="true">
-            <img src={config.heroImage} alt="" className="km-hero-kundli-img" width={960} height={960} decoding="async" />
+          {config.heroBenefits?.items?.length ? (
+            <div className="ss-hero-benefits">
+              {config.heroBenefits.title ? <p className="ss-hero-benefits__title">{config.heroBenefits.title}</p> : null}
+              <div className="ss-hero-benefits__list">
+                {config.heroBenefits.items.map((item, idx) => {
+                  const text = typeof item === 'string' ? item : item.text
+                  const emoji = typeof item === 'string' ? '✨' : item.emoji || '✨'
+                  return (
+                    <span key={`${text}-${idx}`} className="ss-hero-benefits__tag">
+                      <span aria-hidden="true">{emoji}</span>
+                      <span>{text}</span>
+                    </span>
+                  )
+                })}
+              </div>
+            </div>
+          ) : null}
+
+          <div
+            className={`km-hero-visual ${config.heroGlassCard ? 'ss-hero-visual--glass' : ''}`}
+            aria-hidden={config.heroGlassCard ? undefined : true}
+          >
+            {config.heroImage && (
+              <img src={config.heroImage} alt="" className="km-hero-kundli-img" width={960} height={960} decoding="async" />
+            )}
+            {!config.heroImage && config.heroGlassCard && (
+              <div className="ss-hero-glass-card">
+                <span className="ss-hero-glass-card__glow" aria-hidden="true" />
+                {config.heroGlassCard.image && (
+                  <div className="ss-hero-glass-card__media">
+                    <img
+                      src={config.heroGlassCard.image}
+                      alt={config.heroGlassCard.imageAlt || ''}
+                      className="ss-hero-glass-card__img"
+                      width={800}
+                      height={600}
+                      decoding="async"
+                    />
+                  </div>
+                )}
+                <p className="ss-hero-glass-card__kicker">{config.heroGlassCard.kicker}</p>
+                <h3 className="ss-hero-glass-card__title">{config.heroGlassCard.title}</h3>
+                <p className="ss-hero-glass-card__sub">{config.heroGlassCard.subtitle}</p>
+                <ul className="ss-hero-glass-card__rows">
+                  {config.heroGlassCard.rows.map((row) => (
+                    <li key={row.label} className="ss-hero-glass-card__row">
+                      <span className="ss-hero-glass-card__label">{row.label}</span>
+                      <span className="ss-hero-glass-card__value">{row.value}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </div>
       </section>
