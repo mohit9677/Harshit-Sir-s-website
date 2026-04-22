@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
+// Use VITE_API_URL in production (set in Vercel env vars), fallback to /api for local dev proxy
+const API_BASE = import.meta.env.VITE_API_URL || '/api';
+
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
@@ -24,7 +27,7 @@ export const AuthProvider = ({ children }) => {
                 return;
             }
 
-            const res = await fetch('http://localhost:5000/api/auth/me', {
+            const res = await fetch(`${API_BASE}/auth/me`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
@@ -51,7 +54,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const res = await fetch('http://localhost:5000/api/auth/signup', {
+            const res = await fetch(`${API_BASE}/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -82,7 +85,7 @@ export const AuthProvider = ({ children }) => {
         setLoading(true);
         setError(null);
         try {
-            const res = await fetch('http://localhost:5000/api/auth/login', {
+            const res = await fetch(`${API_BASE}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
